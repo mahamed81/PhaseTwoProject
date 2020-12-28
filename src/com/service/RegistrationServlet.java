@@ -24,16 +24,15 @@ public class RegistrationServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
 
 		Registration regis = new Registration(request.getParameter("name"), request.getParameter("username"),
 				request.getParameter("email"), request.getParameter("password"));
 
-		session.setAttribute("name", request.getParameter("name"));
-
 		AddUsers user = new AddUsers();
-
+		
 		if (user.Register(regis) > 0) {
+			HttpSession session = request.getSession();
+			session.setAttribute("name", request.getParameter("name"));
 			response.sendRedirect("registerSuccess.jsp");
 		} else {
 			response.sendRedirect("registerFail.jsp");

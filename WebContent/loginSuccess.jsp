@@ -7,9 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%out.println("Login Successful! \n" +" Welcome :"+ "<h3>" + session.getAttribute("name") + "!" + "</h3>"); %></br>
-	<button onclick="window.location.href='login.html';">Logout</button>
-	<button onclick="window.location.href='Registration.html';">Registration</button>
+	<%out.println("Login Successful! \n" +" Welcome :"+ "<h3>" + session.getAttribute("uname") + "!" + "</h3>"); %></br>
+	<button onclick="window.location.href='index.jsp';">Logout</button>
 	<% session.invalidate();%>
 	
 </body>

@@ -29,13 +29,16 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		
 
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		AddUsers user = new AddUsers();
 
 		if (user.verifyUser(username, password)) {
+			HttpSession session = request.getSession();
+			session.setAttribute("uname", username);
+			
 			response.sendRedirect("loginSuccess.jsp");
 		} else {
 			response.sendRedirect("loginFail.jsp");
